@@ -1,0 +1,228 @@
+CREATE TABLE Sender (
+userID NUMBER PRIMARY KEY,
+name VARCHAR2(30) NOT NULL,
+email VARCHAR2(30) NOT NULL,
+phone NUMBER NOT NULL,
+address VARCHAR2(30) NOT NULL,
+city VARCHAR2(30) NOT NULL,
+country VARCHAR2(30) NOT NULL
+);
+CREATE TABLE Receiver (
+receiverID NUMBER PRIMARY KEY,
+name VARCHAR2(30) NOT NULL,
+phone NUMBER NOT NULL,
+address VARCHAR2(30) NOT NULL,
+city VARCHAR2(30) NOT NULL,
+country VARCHAR2(30) NOT NULL
+);
+CREATE TABLE Delivery (
+transportID NUMBER PRIMARY KEY,
+transportMethod VARCHAR2(20) NOT NULL,
+costPerUnit NUMBER(7,2) NOT NULL
+);
+CREATE TABLE Package (
+userID NUMBER NOT NULL,
+receiverID NUMBER NOT NULL,
+transportID NUMBER NOT NULL,
+orderID NUMBER PRIMARY KEY,
+dateReceived DATE NOT NULL,
+deliveryDate DATE NOT NULL
+weight NUMBER(7,2) NOT NULL,
+FOREIGN KEY (userID) REFERENCES Sender (userID),
+FOREIGN KEY (receiverID) REFERENCES Receiver (receiverID),
+FOREIGN KEY (transportID) REFERENCES Delivery (transportID),
+);
+CREATE TABLE Billing (
+transactionID NUMBER PRIMARY KEY,
+cost NUMBER NOT NULL,
+description VARCHAR(40) NOT NULL,
+orderID NUMBER,
+FOREIGN KEY (orderID) REFERENCES Package (orderID)
+);
+CREATE TABLE Tracking (
+trackingID NUMBER PRIMARY KEY,
+ origin VARCHAR2(30) NOT NULL,
+ currentLocation VARCHAR2(30) NOT NULL,
+ destination VARCHAR2(30) NOT NULL,
+ date DATE NOT NULL,
+ orderID NUMBER,
+FOREIGN KEY (orderID) REFERENCES Package (orderID)
+);
+____________________________________________________________________
+_____
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (201,'Walter scott' , 'walterscott@gmail.com' 
+,202555130,'Orchard Avenue','Denver','United States');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (202,'Walker adams' ,'walkeradams@gmail.com' 
+,202555169,'Crescent Street','Miami','United States');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (203,'Larry nelson','larrynelson@gmail.com’,202555172,'Laurel 
+Drive','San Francisco','United States');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (204,'Thanishekaran adith', 'santoshadith@gmail.com' 
+,44567389,'Dubai Downtown','Dubai','United Arab Emirates');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (205,'Soumyajit das', 'soumyajit1998@gmail.com' 
+,8756873435,'Park Street', 'Kolkata','India');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (206,'Aditya santosh', 'adityasan45@yahoo.com', 
+8789743214,'White Street','Mumbai','India');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (207,'Emily cabler','emilycabler@gmail.com',33590886,'Route 
+30','London','United Kingdom');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (208,'Samar garg', 'gargsamar2001@gmail.com', 
+8997664545,'Crescent Street','Delhi','India');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (209,' Abdul azeem', 'azeemshaik123@gmail.com', 
+34345050,'Lusail Main','Doha','Qatar');
+Insert into SENDER (USERID,NAME,EMAIL,PHONE,ADDRESS,CITY,COUNTRY) 
+values (210,'Kenneth brown','kennethbrown@yahoo.com' 
+,234443115,'Route 30','Manchester','United Kingdom');
+______
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (501,'United States','United Kingdom','India',to_date('04-
+MAY-21','DD-MON-RR'),101);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (502,'United States','United Kingdom','India',to_date('26-
+APR-21','DD-MON-RR'),102);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (503,'United States','United Kingdom','India',to_date('14-
+JUN-21','DD-MON-RR'),103);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (504,'United Arab Emirates','Italy','United 
+States',to_date('03-JUN-21','DD-MON-RR'),104);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (505,'United States','Iceland','United Kingdom',to_date('02-
+MAY-21','DD-MON-RR'),105);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (506,'India','New Zealand','Japan',to_date('02-MAY-21','DDMON-RR'),106);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (507,'India','Bhutan','Nepal',to_date('28-APR-21','DD-MONRR'),107);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (508,'India','Bhutan','Nepal',to_date('08-MAY-21','DD-MONRR'),108);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (509,'United Kingdom','Saudi Arabia','India',to_date('03-MAY21','DD-MON-RR'),109);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (510,'India','United Arab Emirates','Saudi 
+Arabia',to_date('07-MAY-21','DD-MON-RR'),110);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (511,'Qatar','Oman','Bahrain',to_date('02-MAY-21','DD-MONRR'),111);
+Insert into TRACKING 
+(TRACKING_ID,ORIGIN,CURRENT_LOCATION,DESTINATION,DATE,ORDERID) 
+values (512,'United Kingdom','Azerbaijan','India',to_date('04-MAY21','DD-MON-RR'),112);
+_______
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (301,'Venkatesh Thota',7995708966,'Venkat Nagar 
+Park','Kakinada','India');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (302,'Karthik Rekhapalli',8179409631,'Navabharat 
+nagar','Rajahmundry','India');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (303,'Hamid Ahmed',8765554345,'Main 
+road','Warangal','India');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (304,'Jimmy Carter',707578432,'Malibu drive','Malibu','United 
+States');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (305,'Dio Brando',320840284,'Northern suburb 
+road','London','United Kingdom');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (306,'Jotaro Kujo',283082483,'Tokyo circle','Tokyo','Japan');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (307,'Rajesh 
+Kumar',4342940910,'Kritipur','Kathmandu','Nepal');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (308,'RD Sharma',8448948993,'Marine Drive','Mumbai','India');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (309,'Jauwaad Shams',9573590856,'Deira','Riyadh','Saudi 
+Arabia');
+Insert into RECEIVER (RECEIVERID,NAME,PHONE,ADDRESS,CITY,COUNTRY) 
+values (310,'Keshav Ganesh',50456778,'Village 
+Road','Manama','Bahrain');
+__________
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (201,301,2,101,to_date('10-MAR-21','DD-MONRR'),to_date('10-MAY-21','DD-MON-RR'),150);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEGHT) values (202,302,3,102,to_date('05-APR-21','DD-MONRR'),to_date('28-APR-21','DD-MON-RR'),10);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (203,303,2,103,to_date('15-APR-21','DD-MONRR'),to_date('16-JUN-21','DD-MON-RR'),120);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (204,304,5,104,to_date('20-APR-21','DD-MONRR'),to_date('05-JUN-21','DD-MON-RR'),200);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (202,305,1,105,to_date('24-APR-21','DD-MONRR'),to_date('04-MAY-21','DD-MON-RR'),18);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (205,306,4,106,to_date('29-APR-21','DD-MONRR'),to_date('03-MAY-21','DD-MON-RR'),9);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (206,307,6,107,to_date('07-APR-21','DD-MONRR'),to_date('30-APR-21','DD-MON-RR'),30);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (206,307,3,108,to_date('02-APR-21','DD-MONRR'),to_date('10-MAY-21','DD-MON-RR'),0.5);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (207,308,4,109,to_date('30-APR-21','DD-MONRR'),to_date('05-MAY-21','DD-MON-RR'),20);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (208,309,1,110,to_date('22-APR-21','DD-MONRR'),to_date('09-MAY-21','DD-MON-RR'),6);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (209,310,1,111,to_date('19-APR-21','DD-MONRR'),to_date('04-MAY-21','DD-MON-RR'),10);
+Insert into PACKAGE 
+(USERID,RECEIVERID,TRANSPORTID,ORDERID,DATERECEIVED,DELIVERYDATE,WEI
+GHT) values (210,309,4,112,to_date('29-APR-21','DD-MONRR'),to_date('06-MAY-21','DD-MON-RR'),11);
+______
+Insert into DELIVERY (TRANSPORTID,TRANSPORTMETHOD,COSTPERUNIT) 
+values (1,'AIR',300);
+Insert into DELIVERY (TRANSPORTID,TRANSPORTMETHOD,COSTPERUNIT) 
+values (2,'SEA',50);
+Insert into DELIVERY (TRANSPORTID,TRANSPORTMETHOD,COSTPERUNIT) 
+values (3,'LAND',150);
+Insert into DELIVERY (TRANSPORTID,TRANSPORTMETHOD,COSTPERUNIT) 
+values (4,'EXPRESS AIR',450);
+Insert into DELIVERY (TRANSPORTID,TRANSPORTMETHOD,COSTPERUNIT) 
+values (5,'EXPRESS SEA',90);
+Insert into DELIVERY (TRANSPORTID,TRANSPORTMETHOD,COSTPERUNIT) 
+values (6,'EXPRESS LAND',250);
+________
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(401,7500,'SCOOTER',101);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(402,1500,'BOOKS',102);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(403,6000,'TREADMILL',103);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(404,18000,'MOTOR BIKE',104);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(405,5400,'FRIDGE',105);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(406,4050,'AC',106);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(407,7500,'WASHING MACHINE',107);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(408,75,'DOCUMENTS',108);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(409,9000,'BED',109);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(410,1800,'SPEAKER',110);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(411,3000,'COMPUTER',111);
+Insert into BILLING (TRANSACTIONID,COST,DESCRIPTION,ORDERID) values 
+(412,4950,'SOFA',112);
