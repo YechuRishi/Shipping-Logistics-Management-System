@@ -52,7 +52,7 @@ The database consists of the following core tables:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/Shipping-Logistics-Management-System.git
+   git clone https://github.com/YechuRishi/Shipping-Logistics-Management-System.git
 
  ## Contact
  Rishi Yechu — yechurishi2003@gmail.com
