@@ -28,7 +28,7 @@ By centralizing this data, the system ensures smoother logistics workflows and b
 
 ## Technologies Used
 
-- ** Oracle SQL:** For database schema design and data management
+- **Oracle SQL:** For database schema design and data management
 - **Relational Database:** Structured storage with foreign keys to maintain data integrity
 - **SQL Scripts:** For inserting initial data and managing operations
 
