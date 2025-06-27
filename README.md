@@ -1,103 +1,61 @@
-Shipping Logistics Management System
-Overview
-The Shipping Logistics Management System is a comprehensive solution designed to streamline and simplify shipping and logistics operations. It manages critical data related to senders, receivers, packages, delivery methods, billing, and shipment tracking — all organized efficiently within a relational database.
+# Shipping Logistics Management System
+
+## Overview
+
+The **Shipping Logistics Management System** is a comprehensive solution designed to streamline and simplify shipping and logistics operations. It manages critical data related to senders, receivers, packages, delivery methods, billing, and shipment tracking — all organized efficiently within a relational database.
 
 This system helps logistics companies and businesses to:
 
-Efficiently record and manage shipment details
-
-Track package status and delivery progress
-
-Manage billing and cost calculations
-
-Maintain accurate sender and receiver information
+- Efficiently record and manage shipment details
+- Track package status and delivery progress
+- Manage billing and cost calculations
+- Maintain accurate sender and receiver information
 
 By centralizing this data, the system ensures smoother logistics workflows and better customer service.
 
-Features
-Sender Management: Store and maintain sender information including contact details and location.
+---
 
-Receiver Management: Keep detailed records of shipment recipients.
+## Features
 
-Package Tracking: Log packages with sender, receiver, delivery method, and order details.
+- **Sender Management:** Store and maintain sender information including contact details and location.
+- **Receiver Management:** Keep detailed records of shipment recipients.
+- **Package Tracking:** Log packages with sender, receiver, delivery method, and order details.
+- **Delivery Methods:** Manage different transportation types (air, sea, land) and associated costs.
+- **Billing:** Generate and track billing transactions related to shipments.
+- **Shipment Tracking:** Monitor origin, current location, and destination of packages with timestamps.
 
-Delivery Methods: Manage different transportation types (air, sea, land) and associated costs.
+---
 
-Billing: Generate and track billing transactions related to shipments.
+## Technologies Used
 
-Shipment Tracking: Monitor origin, current location, and destination of packages with timestamps.
+- **SQL / Oracle SQL:** For database schema design and data management
+- **Relational Database:** Structured storage with foreign keys to maintain data integrity
+- **PL/SQL Scripts:** For inserting initial data and managing operations
 
-Technologies Used
-SQL / Oracle SQL: For database schema design and data management
+---
 
-Relational Database: Structured storage with foreign keys to maintain data integrity
+## Database Schema
 
-PL/SQL Scripts: For inserting initial data and managing operations
-
-Database Schema
 The database consists of the following core tables:
 
-Sender — Sender details
+- `Sender` — Sender details
+- `Receiver` — Receiver details
+- `Package` — Package details linking sender, receiver, and delivery
+- `Delivery` — Delivery methods and cost per unit
+- `Billing` — Billing transactions related to packages
+- `Tracking` — Shipment tracking details
 
-Receiver — Receiver details
+---
 
-Package — Package details linking sender, receiver, and delivery
+## Getting Started
 
-Delivery — Delivery methods and cost per unit
+1. **Clone the repository**
 
-Billing — Billing transactions related to packages
+   ```bash
+   git clone https://github.com/yourusername/Shipping-Logistics-Management-System.git
 
-Tracking — Shipment tracking details
-
-Getting Started
-Clone the repository
-
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/Shipping-Logistics-Management-System.git
-Setup your Oracle SQL environment (or any compatible SQL database).
-
-Run the provided SQL scripts in the following order to create tables and insert sample data:
-
-create_tables.sql
-
-insert_data.sql
-
-Start managing shipments!
-
-Sample Data
-The project includes comprehensive sample data for:
-
-10 Senders
-
-10 Receivers
-
-6 Delivery Methods
-
-12 Packages
-
-12 Billing Transactions
-
-12 Tracking Records
-
-This data enables you to test queries and system behavior immediately.
-
-Future Enhancements
-Develop a user-friendly front-end interface
-
-Add automation for billing and notifications
-
-Integrate real-time tracking updates
-
-Support multiple currencies and internationalization
-
-License
-This project is licensed under the MIT License — feel free to use, modify, and share!
-
-Contact
-For questions or contributions, please reach out to:
-Your Name — your.email@example.com
+ ## Contact
+ Rishi Yechu — yechurishi2003@gmail.com
 
 
 
